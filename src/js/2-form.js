@@ -21,16 +21,8 @@ form.elements.email.value = formData.email;
 form.elements.message.value = formData.message;
 
 const formInputHandler = (e) => {
-  const elementType = e.target.type;
-  const value = e.target.value.trim();
-  switch (elementType) {
-    case 'email':
-      formData.email = value;
-      break;
-    case 'textarea':
-      formData.message = value;
-      break;
-  }
+  const { name, value } = e.target;
+  formData[name] = value.trim();
   localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
 };
 
